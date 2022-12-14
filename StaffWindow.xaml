@@ -6,8 +6,19 @@
         xmlns:local="clr-namespace:WpfApp"
         mc:Ignorable="d"
         Title="StaffWindow" Height="450" Width="800">
+    
     <Grid>
-        <DataGrid Name="dataGrid1" IsReadOnly="True" AutoGenerateColumns="False" >
+        <ToolBarTray>
+            <ToolBar>
+                <TextBlock Text="Экспортировать в:" VerticalAlignment="Center" FontSize="11"/>
+
+                <Button Click="Button_SaveExcel" Content="excel" Width="60" FontSize="11" Style="{StaticResource MaterialDesignFlatButton}"/>
+
+                <Button Click="Button_SaveJson" Content="json" Width="60" FontSize="11" Style="{StaticResource MaterialDesignFlatButton}"/>
+            </ToolBar>
+        </ToolBarTray>
+        
+        <DataGrid Name="dataGrid1" IsReadOnly="True" AutoGenerateColumns="False" Margin="0,39,0,-60" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding ID}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Имя" Binding="{Binding Name}"></DataGridTextColumn>

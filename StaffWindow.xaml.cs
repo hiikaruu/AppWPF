@@ -1,16 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using WpfApp.Tables;
+using WpfApp;
 
 namespace WpfApp
 {
@@ -26,7 +19,7 @@ namespace WpfApp
         }
         private void getValue(object sender, RoutedEventArgs e)
         {
-            List<WpfApp.Tables.Person> workerList = new List<WpfApp.Tables.Person>();
+            List<Person> workerList = new List<Person>();
             using (var db = new Data.MyDbContext())
             {
                 var query = from b in db.Persons select b;
@@ -38,5 +31,14 @@ namespace WpfApp
             dataGrid1.ItemsSource = workerList;
         }
 
+        private void Button_SaveExcel(object sender, RoutedEventArgs e)
+        {
+            new Excel().createFile();
+        }
+        private void Button_SaveJson(object sender, RoutedEventArgs e)
+        {
+            new Json().getJson();
+
+        }
     }
 }

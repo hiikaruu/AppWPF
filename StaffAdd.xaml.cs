@@ -55,9 +55,16 @@ namespace WpfApp
             if (!(DateTime.TryParse(infreqfild[3], out date)))
             {
                 dtBirth.ToolTip = "\"День рождения\" указан не верно. Данное поле заполняется по шаблону День.Месяц.Год или День-Месяц-Год";
-                dtBirth.Background = Brushes.LightPink;
-                return;
+                SolidColorBrush lightPink = Brushes.LightPink;
             }
+
+            else
+            {
+                dtBirth.ToolTip = "Значение в поле Дата рождения должно быть заполнено";
+                dtBirth.Background = Brushes.LightPink;
+
+            }
+            
             if ((int.TryParse(infreqfild[4].Replace('+', ' '), out int value))) 
             {
                 number.ToolTip = ("Значение \"Номер телефона\" указано не верно. Номер должен начинаться с +7 или 8");
@@ -88,8 +95,6 @@ namespace WpfApp
                     name.Background = Brushes.LightPink;
                     surname.ToolTip = "Значение в поле Фамилия должно быть заполнено";
                     surname.Background = Brushes.LightPink;
-                    dtBirth.ToolTip = "Значение в поле Дата рождения должно быть заполнено";
-                    dtBirth.Background = Brushes.LightPink;
                     department.ToolTip = "Значение в поле Отдел должно быть заполнено";
                     department.Background = Brushes.LightPink;
                     number.ToolTip = "Значение в поле Номер должно быть заполнено";
