@@ -6,23 +6,27 @@
         xmlns:local="clr-namespace:WpfApp"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="MainWindow" Height="600" Width="600" WindowStyle="None" ResizeMode="NoResize" Background="Transparent" AllowsTransparency="True"  WindowStartupLocation="CenterScreen">
-    <Border Background="#dcf2f2" CornerRadius="20" >
+        Title="" Height="600" Width="600" WindowStyle="SingleBorderWindow" ResizeMode="NoResize" Background="Transparent"  WindowStartupLocation="CenterScreen" ShowInTaskbar="False">
+    <Border Background="#dcf2f2" >
         <Border MinWidth="360" Margin="15" Background="White" VerticalAlignment="Center" Padding="30" MaxWidth="360" CornerRadius="20">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0"/>
             </Border.Effect>
             <StackPanel>
                 <TextBlock  Text="Введите данные:" FontSize="30" FontWeight="Bold" Margin="0 0 0 20" HorizontalAlignment="Center" FontFamily="Bahnschrift Light"/>
-                <TextBox x:Name="id" materialDesign:HintAssist.Hint="ID" Style="{StaticResource MaterialDesignFloatingHintTextBox}" HorizontalContentAlignment="Center"  Text="{Binding ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                <TextBox x:Name="id" materialDesign:HintAssist.Hint="ID" Style="{StaticResource MaterialDesignFloatingHintTextBox}" HorizontalContentAlignment="Center"  Text="{Binding Id, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
 PreviewTextInput="id_PreviewTextInput"/>
-                <TextBox x:Name="surname" materialDesign:HintAssist.Hint="Фамилия" Style="{StaticResource MaterialDesignFloatingHintTextBox}" HorizontalContentAlignment="Center"/>
-                <TextBox x:Name="name" materialDesign:HintAssist.Hint="Имя" Style="{StaticResource MaterialDesignFloatingHintTextBox}" HorizontalContentAlignment="Center"/>
-                <TextBox x:Name="patronymic" materialDesign:HintAssist.Hint="Отчество" Style="{StaticResource MaterialDesignFloatingHintTextBox}" HorizontalContentAlignment="Center"/>
-                <TextBox x:Name="dtBirth" materialDesign:HintAssist.Hint="Дата рождения" Style="{StaticResource MaterialDesignFloatingHintTextBox}" HorizontalContentAlignment="Center"/>
+                <TextBox x:Name="surname" materialDesign:HintAssist.Hint="Фамилия" Style="{StaticResource MaterialDesignFloatingHintTextBox}" HorizontalContentAlignment="Center" Text="{Binding Surname, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+PreviewTextInput="surname_PreviewTextInput"/>
+                <TextBox x:Name="name" materialDesign:HintAssist.Hint="Имя" Style="{StaticResource MaterialDesignFloatingHintTextBox}" HorizontalContentAlignment="Center" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+PreviewTextInput="name_PreviewTextInput"/>
+                <TextBox x:Name="patronymic" materialDesign:HintAssist.Hint="Отчество" Style="{StaticResource MaterialDesignFloatingHintTextBox}" HorizontalContentAlignment="Center" Text="{Binding Patronymic, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+PreviewTextInput="patronymic_PreviewTextInput"/>
+                <TextBox x:Name="dtBirth" materialDesign:HintAssist.Hint="Дата рождения" Style="{StaticResource MaterialDesignFloatingHintTextBox}" HorizontalContentAlignment="Center" />
                 <TextBox x:Name="number" materialDesign:HintAssist.Hint="Номер телефона" Style="{StaticResource MaterialDesignFloatingHintTextBox}" HorizontalContentAlignment="Center" Text = "{Binding Number, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
 PreviewTextInput="Number_PreviewTextInput"/>
-                <TextBox x:Name="department" materialDesign:HintAssist.Hint="Отдел" Style="{StaticResource MaterialDesignFloatingHintTextBox}" HorizontalContentAlignment="Center" />
+                <TextBox x:Name="department" materialDesign:HintAssist.Hint="Отдел" Style="{StaticResource MaterialDesignFloatingHintTextBox}" HorizontalContentAlignment="Center" Text = "{Binding Department, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+PreviewTextInput="department_PreviewTextInput"/>
 
                 <Grid>
                     <Button Margin="0 30 0 0" Width="200" HorizontalAlignment="Center" Content="Добавить" FontSize="18" FontFamily="Bahnschrift Light" Click="ButtonStaff_Click"/>

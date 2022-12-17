@@ -19,16 +19,16 @@ namespace WpfApp
         }
         private void getValue(object sender, RoutedEventArgs e)
         {
-            List<Person> workerList = new List<Person>();
+            List<Person> personList = new List<Person>();
             using (var db = new Data.MyDbContext())
             {
                 var query = from b in db.Persons select b;
                 foreach (var item in query)
                 {
-                    workerList.Add(item);
+                    personList.Add(item);
                 }
             }
-            dataGrid1.ItemsSource = workerList;
+            dataGrid1.ItemsSource = personList;
         }
 
         private void Button_SaveExcel(object sender, RoutedEventArgs e)

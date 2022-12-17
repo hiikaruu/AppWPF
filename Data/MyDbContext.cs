@@ -22,7 +22,7 @@ namespace WpfApp.Data
         }
 
         public DbSet<Tables.Person> Persons { get; set; }
-
+        public static bool IsSaved { get; internal set; }
     }
 
 }

@@ -152,9 +152,9 @@
     <Compile Include="Data\Configuration.cs" />
     <Compile Include="Data\MyDbContextInitializer.cs" />
     <Compile Include="Mainfun.cs" />
-    <Compile Include="Migrations\202212141751504_init.cs" />
-    <Compile Include="Migrations\202212141751504_init.designer.cs">
-      <DependentUpon>202212141751504_init.cs</DependentUpon>
+    <Compile Include="Migrations\202212150707418_init.cs" />
+    <Compile Include="Migrations\202212150707418_init.designer.cs">
+      <DependentUpon>202212150707418_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="StaffAdd.xaml.cs">
@@ -200,8 +200,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\202212141751504_init.resx">
-      <DependentUpon>202212141751504_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202212150707418_init.resx">
+      <DependentUpon>202212150707418_init.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

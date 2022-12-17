@@ -29,6 +29,7 @@ namespace WpfApp
         {
             StaffAdd staffadd = new StaffAdd();
             staffadd.Show();
+                                                
             this.Close();
         }
 
