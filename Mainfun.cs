@@ -38,8 +38,9 @@ namespace WpfApp
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                string path = ("../Reports/Отчет-Сотрудники.xlsx");
+                var path = @"" + fbd.SelectedPath + "\\Отчет отдела кадров.xlsx";
                 ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+
 
                 using (ExcelPackage pck = new ExcelPackage())
                 {
@@ -61,11 +62,10 @@ namespace WpfApp
                     }
                     catch (System.InvalidOperationException e)
                     {
-                        System.Windows.MessageBox.Show("ЪУЪ ошибка выбора пути", "Ошибка сохранения", MessageBoxButton.OK, MessageBoxImage.Error);
+                        System.Windows.MessageBox.Show("Ошибка выбора пути. Выберетие другой путь сохранения", "Ошибка сохранения", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
 
                 }
-                return;
             }
         }
     }

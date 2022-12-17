@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data.Entity;
 using System.Text.RegularExpressions;
-
+using WpfApp.Tables;
 
 namespace WpfApp
 {
@@ -42,6 +42,27 @@ namespace WpfApp
         {
             e.Handled = Regex.IsMatch(e.Text, "[^0-9]");
         }
+
+        private void surname_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = Regex.IsMatch(e.Text, "[^А-Яа-яЁё]");
+        }
+        private void name_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = Regex.IsMatch(e.Text, "[^А-Яа-яЁё]");
+        }
+        private void patronymic_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = Regex.IsMatch(e.Text, "[^А-Яа-яЁё]");
+        }
+        private void dtBirth_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = Regex.IsMatch(e.Text, "[^0-9/.] ");
+        }
+        private void department_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = Regex.IsMatch(e.Text, "[^А-Яа-яЁё]");
+        }
         private void ButtonStaff_Click(object sender, RoutedEventArgs e)
         {
             String[] infreqfild = new String[reqfild] { id.Text, surname.Text, name.Text, dtBirth.Text, number.Text, department.Text };
@@ -50,38 +71,33 @@ namespace WpfApp
                 return;
 
 
-            infreqfild[3] = infreqfild[3].Replace('.', '-') + " 0:00:0 PM";
+            infreqfild[3] = infreqfild[3].Replace('.', '-');
             DateTime date;
-            if (!(DateTime.TryParse(infreqfild[3], out date)))
+            if ((DateTime.TryParse(infreqfild[3], out date)))
             {
-                dtBirth.ToolTip = "\"День рождения\" указан не верно. Данное поле заполняется по шаблону День.Месяц.Год или День-Месяц-Год";
-                SolidColorBrush lightPink = Brushes.LightPink;
-            }
-
-            else
-            {
-                dtBirth.ToolTip = "Значение в поле Дата рождения должно быть заполнено";
+                dtBirth.ToolTip = "\"Дата рождения\" указан не верно. Данное поле заполняется по шаблону День.Месяц.Год или День-Месяц-Год";
                 dtBirth.Background = Brushes.LightPink;
-
             }
-            
-            if ((int.TryParse(infreqfild[4].Replace('+', ' '), out int value))) 
+
+
+            if ((int.TryParse(infreqfild[4], out int value))) 
             {
-                number.ToolTip = ("Значение \"Номер телефона\" указано не верно. Номер должен начинаться с +7 или 8");
+                number.ToolTip = ("Значение \"Номер телефона\" указано не верно.");
+                dtBirth.Background = Brushes.LightPink;
                 return;
             }
 
 
             using (var db = new Data.MyDbContext())
             {
-                var worker = new WpfApp.Tables.Person { Name = name.Text, Surname = surname.Text, Patronymic = patronymic.Text, DtBirth = dtBirth.Text, Number = number.Text, Department = department.Text };
-                db.Persons.Add(worker);
+                var person = new Person{Id = int.Parse(id.Text), Name = name.Text, Surname = surname.Text, Patronymic = patronymic.Text, DtBirth = dtBirth.Text, Number = number.Text, Department = department.Text };
+                db.Persons.Add(person);
                 db.SaveChanges();
 
             }
-
             StaffWindow staffwin = new StaffWindow();
             staffwin.Show();
+
         }
 
         private bool firstValidations(String[] infreqfild)
@@ -89,20 +105,12 @@ namespace WpfApp
             for (int i = 0; i < reqfild; i++)
                 if (infreqfild[i] == "")
                 {
-                    id.ToolTip = "Значение в поле ID должно быть заполнено";
-                    id.Background = Brushes.LightPink;
-                    name.ToolTip = "Значение в поле Имя должно быть заполнено";
-                    name.Background = Brushes.LightPink;
-                    surname.ToolTip = "Значение в поле Фамилия должно быть заполнено";
-                    surname.Background = Brushes.LightPink;
-                    department.ToolTip = "Значение в поле Отдел должно быть заполнено";
-                    department.Background = Brushes.LightPink;
-                    number.ToolTip = "Значение в поле Номер должно быть заполнено";
-                    number.Background = Brushes.LightPink;
-
+                    ToolTip = ("Значение в поле \"" + namereqfild[i] + "\" должно быть заполнено");
+                    Background = Brushes.LightPink;
                     return false;
                 }
             return true;
+
         
         }
 

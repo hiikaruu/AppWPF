@@ -20,12 +20,12 @@
         
         <DataGrid Name="dataGrid1" IsReadOnly="True" AutoGenerateColumns="False" Margin="0,39,0,-60" >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding ID}"></DataGridTextColumn>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Имя" Binding="{Binding Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Фамилия" Binding="{Binding Surname}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Отчество" Binding="{Binding Patronymic}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Дата рождения" Binding="{Binding DtBirth}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Телефон" Binding="{Binding Number}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата рождения" Binding="{Binding DtBirth}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Отдел" Binding="{Binding Department}"></DataGridTextColumn>
             </DataGrid.Columns>
             <DataGrid.RowDetailsTemplate>
@@ -34,7 +34,7 @@
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock FontSize="12" Text="ID сотрудника: " VerticalAlignment="Center" />
-                                <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding Ident}" VerticalAlignment="Center" />
+                                <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding Id}" VerticalAlignment="Center" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock FontSize="12" Text="Имя: " VerticalAlignment="Center" />
@@ -50,14 +50,14 @@
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock FontSize="12" Text="Дата рождения: " VerticalAlignment="Center" />
-                                <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding DateOfBirth}" VerticalAlignment="Center" />
+                                <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding DBirth}" VerticalAlignment="Center" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontSize="12" Text="Телефон: " VerticalAlignment="Center" />
-                                <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding Telephone}" VerticalAlignment="Center" />
+                                <TextBlock FontSize="12" Text="Номер телефона: " VerticalAlignment="Center" />
+                                <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding Number}" VerticalAlignment="Center" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontSize="12" Text="Должность: " VerticalAlignment="Center" />
+                                <TextBlock FontSize="12" Text="Отдел: " VerticalAlignment="Center" />
                                 <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding Department}" VerticalAlignment="Center" />
                             </StackPanel>
                         </StackPanel>
